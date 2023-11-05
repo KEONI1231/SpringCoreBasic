@@ -7,6 +7,7 @@ package helloCoreB.CoreBasic.member;
 
 
  */
+//무엇을
 public interface MemberService {
     void join(Member member);
     Member findMember(Long memberId);

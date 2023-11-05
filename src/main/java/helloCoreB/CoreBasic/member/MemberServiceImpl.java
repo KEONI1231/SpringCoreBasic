@@ -3,6 +3,12 @@ package helloCoreB.CoreBasic.member;
 public class MemberServiceImpl implements MemberService{
 
     private final MemberRepository memberRepository = new MemoryMemberRepository();
+    //프로그래밍의 대상은 구현체가 아닌 인터페이스에 맞춰야 한다.
+    // 즉 코드는 가능한 구현보다는 인터페이스에 의존해야한다.
+    // 이렇게 하면 구현이 변경되더라도 사용하는 쪽의 코드를 수정할 필요가 없어진다.
+    //또한 나중에 MemoryMemberRepository를 다른 MemberRepository 의 구현으로 교체하고자 할 때,
+    //MemberServiceImpl의 나머지 코드를 변경할 필요 없이 단지 새로운 구현 클래스를 인스턴스화하는 부분만
+    //변경하면 된다.
     @Override
     public void join(Member member) {
         memberRepository.save(member);
