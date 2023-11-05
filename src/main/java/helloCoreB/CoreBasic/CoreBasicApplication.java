@@ -3,6 +3,13 @@ package helloCoreB.CoreBasic;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
+/*
+	컨트롤러 : @Controller (프레젠테이션 레이어, 웹 요청과 응답을 처리함) -> api
+	로직 처리 : @Service (서비스 레이어, 내부에서 자바 로직을 처리함)
+	외부I/O 처리 : @Repository (퍼시스턴스 레이어, DB나 파일같은 외부 I/O 작업을 처리함)
+*/
+
 @SpringBootApplication
 public class CoreBasicApplication {
 
