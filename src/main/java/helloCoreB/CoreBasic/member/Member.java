@@ -1,5 +1,9 @@
 package helloCoreB.CoreBasic.member;
 
+import lombok.Getter;
+import lombok.Setter;
+
+
 public class Member {
     private Long id;
     private String name;
