@@ -29,6 +29,9 @@ public class OrderSerivceImpl implements OrderService
         private DiscountPolicy discountPolicy;
         물론 interface만 가지고 실행할수 없기때문에 이 상태에서 코드를 실행하면 널포인트이쎕션발생
         OrderServiceImpl에 DiscountPolicy의 구현객체를 대신 생성하고 주입해주어야 한다.
+        AppConfig의 생성자를 통해서 할당. 즉 추상화에만 의존하게 됨.
+        생성자를 통해서 객체가 들어감. -> 생성자 주입.
+        MemberServiceImpl 입장에선 의존관계를 마치 외부에서 주입해주는 것 같다고 해서 DI, 의존성 주입이라고 함.
      */
     //private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
 
