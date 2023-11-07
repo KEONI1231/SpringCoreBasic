@@ -7,7 +7,9 @@ import helloCoreB.CoreBasic.member.MemoryMemberRepository;
 
 public class OrderSerivceImpl implements OrderService
 {
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
     //private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
     /*
         [ 현재 의존 관계 ]
@@ -30,7 +32,14 @@ public class OrderSerivceImpl implements OrderService
      */
     //private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
 
-    private DiscountPolicy discountPolicy;
+
+
+    public OrderSerivceImpl(MemberRepository memberRepository,
+                            DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy  = discountPolicy;
+    }
+
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
