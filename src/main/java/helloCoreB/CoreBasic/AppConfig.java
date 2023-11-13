@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 
+//
 @Configuration
 public class AppConfig {
 
@@ -18,19 +19,29 @@ public class AppConfig {
     // 메서드엔 Bean -> 스프링 컨테이너에 등록됨
     // 스프링 컨테이너를 쓰면 객체를 싱글톤 형태로 만들어서 관리해준다.
     //
+
+
+
+    /*
+        //@Bean memberService -> new MemoryMemberRepository()
+        //@Bean orderService -> new MemoryMemberRepository();
+
+
+     */
     @Bean
     public MemberService memberService() {
-
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
 
     }
     @Bean
     public MemoryMemberRepository memberRepository() {
-
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
     @Bean
     public OrderService orderService() {
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(
                 memberRepository(),
                 discountPolicy()
