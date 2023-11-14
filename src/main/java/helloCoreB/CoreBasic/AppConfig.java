@@ -18,14 +18,21 @@ public class AppConfig {
     // AppConfig -> 설정 정보, 구성정보 담당엔 @Configration
     // 메서드엔 Bean -> 스프링 컨테이너에 등록됨
     // 스프링 컨테이너를 쓰면 객체를 싱글톤 형태로 만들어서 관리해준다.
-    //
-
-
-
     /*
-        //@Bean memberService -> new MemoryMemberRepository()
-        //@Bean orderService -> new MemoryMemberRepository();
+        @Bean memberService -> new MemoryMemberRepository()
+        @Bean orderService -> new MemoryMemberRepository();
 
+        [ 예상 ]
+        //call AppConfig.memberService
+        //call AppConfig.memberRepository
+        //call AppConfig.memberRepository
+        //call AppConfig.orderService
+        //call AppConfig.memberRepository
+
+        [ 실제 호출 ]
+        //call AppConfig.memberService
+        //call AppConfig.memberRepository
+        //call AppConfig.orderService
 
      */
     @Bean
@@ -51,6 +58,7 @@ public class AppConfig {
     @Bean
     public DiscountPolicy discountPolicy() {
         //return new FixDiscountPolicy();
+
         return new RateDiscountPolicy();
     }
 }

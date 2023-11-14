@@ -18,6 +18,7 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public void join(Member member) {
+
         memberRepository.save(member);
 
     }
@@ -30,6 +31,7 @@ public class MemberServiceImpl implements MemberService{
 
     //TEST
     public MemberRepository getMemberRepository() {
+
         return memberRepository;
 
     }
