@@ -1,5 +1,9 @@
 package helloCoreB.CoreBasic.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemberServiceImpl implements MemberService{
 
     private final MemberRepository memberRepository;
@@ -12,6 +16,12 @@ public class MemberServiceImpl implements MemberService{
     //AppConfig의 생성자를 통해서 할당. 즉 추상화에만 의존하게 됨.
     //생성자를 통해서 객체가 들어감. -> 생성자 주입.
     //MemberServiceImpl 입장에선 의존관계를 마치 외부에서 주입해주는 것 같다고 해서 DI, 의존성 주입이라고 함.
+
+
+    //AutoWired
+    //생성자에 autowired라는 어노테이션을 생성자에 붙여주면 생성자에 타입이 맞는 NenberRepository
+    // 터압에 맞는 애를 찾아와서 의존관계 주입을 자동으로 찾아와서 주입해준다.
+    @Autowired
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
