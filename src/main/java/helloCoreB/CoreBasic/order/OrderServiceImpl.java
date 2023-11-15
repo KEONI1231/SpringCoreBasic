@@ -1,19 +1,35 @@
 package helloCoreB.CoreBasic.order;
 
+import helloCoreB.CoreBasic.annotation.MainDiscountPolicy;
 import helloCoreB.CoreBasic.discount.DiscountPolicy;
 import helloCoreB.CoreBasic.member.Member;
 import helloCoreB.CoreBasic.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+
 @Component
+
+//@RequiredArgsConstructor //씹중요!! 생성자. 주입 자동으로 생성자 만들어줌.
+//final 이 붙으면 초기화 또는 생성자 무조건 필수적인데, final이 붙은 것들에 대해서 생성자를 만들어줌
 public class OrderServiceImpl implements OrderService
 {
 //    @Autowired private MemberRepository memberRepository;
 //    @Autowired private  DiscountPolicy discountPolicy;
 
-     private final  MemberRepository memberRepository;
+     private final MemberRepository memberRepository;
      private final DiscountPolicy discountPolicy;
+
+//     @Autowired
+//     public void setMemberRepository(MemberRepository memberRepository) {
+//         this.memberRepository = memberRepository;
+//     }
+//     @Autowired
+//     public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+//         this.discountPolicy = discountPolicy;
+//     }
 
 
     //private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
@@ -41,9 +57,10 @@ public class OrderServiceImpl implements OrderService
      */
     //private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
 
+
     @Autowired
     public OrderServiceImpl(MemberRepository memberRepository,
-                            DiscountPolicy discountPolicy) {
+                            @MainDiscountPolicy DiscountPolicy discountPolicy ) {
         System.out.println("memberRepository = " + memberRepository);
         System.out.println("discountPolicy  = " + discountPolicy);
         this.memberRepository = memberRepository; //어떤 저장소에 저장할건지

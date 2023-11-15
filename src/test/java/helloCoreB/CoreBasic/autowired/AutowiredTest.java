@@ -13,7 +13,6 @@ public class AutowiredTest {
     @Test
     void AutowiredOption() {
         ApplicationContext ac = new AnnotationConfigApplicationContext(TestBean.class);
-
     }
     static class TestBean {
         @Autowired(required = false) //의존 관계가 없으면 이 메서드 호출 자체가 안된다.
